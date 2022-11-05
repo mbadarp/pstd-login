@@ -43,21 +43,23 @@
                                     </g>
                                 </svg>
                             </span>
-                            <span class="app-brand-text demo text-body fw-bolder">Sneat</span>
+                            <span class="app-brand-text demo text-body fw-bolder">P.std registration</span>
                         </a>
                     </div>
                     <!-- /Logo -->
                     <h4 class="mb-2">Adventure starts here 🚀</h4>
-                    <p class="mb-4">Make your app management easy and fun!</p>
+                    <!-- <p class="mb-4">Make your app management easy and fun!</p> -->
 
-                    <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+                    <form id="formAuthentication" class="mb-3" action="<?= base_url('auth/registration') ?>" method="POST">
                         <div class="mb-3">
                             <label for="name" class="form-label">Full Name</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name" autofocus />
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name" autofocus value="<?= set_value('name'); ?>" />
+                            <?= form_error('name', '<small class="text-danger ps-1">', '</small>'); ?>
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email" />
+                            <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email" value="<?= set_value('email'); ?>" />
+                            <?= form_error('email', '<small class="text-danger ps-1">', '</small>'); ?>
                         </div>
                         <div class="mb-3 form-password-toggle">
                             <label class="form-label" for="password">Password</label>
@@ -65,6 +67,7 @@
                                 <input type="password" id="password1" class="form-control" name="password1" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
                                 <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                             </div>
+                            <?= form_error('password1', '<small class="text-danger ps-1">', '</small>'); ?>
                         </div>
                         <div class="mb-3 form-password-toggle">
                             <label class="form-label" for="password">Repeat Password</label>

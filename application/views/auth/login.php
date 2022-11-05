@@ -43,12 +43,14 @@
                                     </g>
                                 </svg>
                             </span>
-                            <span class="app-brand-text demo text-body fw-bolder">Wpu Login</span>
+                            <span class="app-brand-text demo text-body fw-bolder">P.std Login</span>
                         </a>
                     </div>
                     <!-- /Logo -->
-                    <h4 class="mb-2">Login Page</h4>
-                    <p class="mb-4">Please sign-in to your account and start the adventure</p>
+                    <!-- <h4 class="mb-2">Login Page</h4>
+                    <p class="mb-4">Please sign-in to your account and start the adventure</p> -->
+
+                    <?= $this->session->flashdata('message'); ?>
 
                     <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
                         <div class="mb-3">
