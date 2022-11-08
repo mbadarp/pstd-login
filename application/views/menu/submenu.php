@@ -8,7 +8,9 @@
         <!-- Hoverable Table rows -->
         <div class="row">
             <div class="col-lg">
-
+                <?php if (validation_errors()) : ?>
+                    <div class="alert alert-danger alert-dismissible" role="alert"><?= validation_errors()  ?><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>
+                <?php endif; ?>
                 <div class="card">
                     <h5 class="card-header">Hoverable rows</h5>
                     <?= form_error('menu', ' <div class="alert alert-danger alert-dismissible" role="alert">', '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'); ?>
@@ -50,8 +52,8 @@
                                         <td><?= $sm['icon'] ?></td>
                                         <td><?= $sm['is_active'] ?></td>
                                         <td>
-                                            <a href="<?= base_url('menu/edit/') . $sm['id'] ?>" class="badge bg-success" data-bs-toggle="modal" data-bs-target="#editMenuModal">edit</a>
-                                            <a href="<?= base_url('menu/delete/') . $sm['id'] ?>" class="badge bg-danger" onclick="return confirm('are you sure?')">delete</a>
+                                            <a href="<?= base_url('menu/editSubMenu/') . $sm['id'] ?>" class="badge bg-success" data-bs-toggle="modal" data-bs-target="#editMenuModal">edit</a>
+                                            <a href="<?= base_url('menu/deleteSubMenu/') . $sm['id'] ?>" class="badge bg-danger" onclick="return confirm('are you sure?')">delete</a>
                                         </td>
                                     </tr>
                                     <?php $i++; ?>
@@ -80,9 +82,34 @@
                 <form action="<?= base_url('menu/submenu') ?>" method="POST">
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col mb-3">
-                                <label for="menu" class="form-label">Menu</label>
-                                <input type="text" id="menu" name="menu" class="form-control" placeholder="Enter Menu name">
+                            <div class=" mb-3">
+                                <label for="title" class="form-label">Title</label>
+                                <input type="text" id="title" name="title" class="form-control" placeholder="Enter Submenu title">
+
+                            </div>
+                            <div class=" mb-3">
+                                <label for="title" class="form-label">Menu</label>
+                                <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example" name="menu_id">
+                                    <option selected>Open this select menu</option>
+                                    <?php foreach ($menu as $m) : ?>
+                                        <option value="<?= $m['id']; ?>"><?= $m['menu']; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                            <div class=" mb-3">
+                                <label for="url" class="form-label">URL</label>
+                                <input type="text" id="url" name="url" class="form-control" placeholder="Enter  url">
+
+                            </div>
+                            <div class=" mb-3">
+                                <label for="icon" class="form-label">Icon <a href="https://boxicons.com/" target="_blank">(boxicons)</a></label>
+                                <input type="text" id="icon" name="icon" class="form-control" placeholder="Enter icon">
+                            </div>
+                            <div class="mb-3">
+                                <div class="form-check mt-3">
+                                    <input class="form-check-input" type="checkbox" value="1" id="is_active" name="is_active" checked />
+                                    <label class="form-check-label" for="is_active"> Active ? </label>
+                                </div>
                             </div>
                         </div>
                     </div>
