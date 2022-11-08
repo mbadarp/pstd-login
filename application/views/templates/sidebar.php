@@ -43,42 +43,46 @@
             ?>
 
             <?php foreach ($subMenu as $sm) : ?>
-                <li class="menu-item">
+                <?php if ($title == $sm['title']) : ?>
+                    <li class="menu-item active">
+                    <?php else : ?>
+                    <li class="menu-item ">
+                    <?php endif; ?>
                     <a href="<?= base_url($sm['url']); ?>" class="menu-link">
                         <i class="menu-icon tf-icons <?= $sm['icon']; ?>"></i>
                         <div data-i18n="Analytics"><?= $sm['title']; ?></div>
                     </a>
-                </li>
+                    </li>
+                <?php endforeach; ?>
+
+
             <?php endforeach; ?>
 
 
-        <?php endforeach; ?>
 
 
 
 
-
-
-        <!-- Misc -->
-        <li class="menu-header small text-uppercase"><span class="menu-header-text"></span></li>
-        <li class="menu-item">
-            <a href="<?= base_url('auth/logout'); ?>" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-log-out"></i>
-                <div data-i18n="Logout">Logout</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues" target="_blank" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-support"></i>
-                <div data-i18n="Support">Support</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/" target="_blank" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-file"></i>
-                <div data-i18n="Documentation">Documentation</div>
-            </a>
-        </li>
+            <!-- Misc -->
+            <li class="menu-header small text-uppercase"><span class="menu-header-text"></span></li>
+            <li class="menu-item">
+                <a href="<?= base_url('auth/logout'); ?>" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-log-out"></i>
+                    <div data-i18n="Logout">Logout</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues" target="_blank" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-support"></i>
+                    <div data-i18n="Support">Support</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/" target="_blank" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-file"></i>
+                    <div data-i18n="Documentation">Documentation</div>
+                </a>
+            </li>
     </ul>
 </aside>
 <!-- / Menu -->
