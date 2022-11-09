@@ -11,6 +11,8 @@ class Auth extends CI_Controller
 
     public function index()
     {
+        $this->goToDefaultPage();
+
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'required|trim');
 
@@ -65,6 +67,8 @@ class Auth extends CI_Controller
 
     public function registration()
     {
+        $this->goToDefaultPage();
+
         $this->form_validation->set_rules('name', 'Name', 'required|trim');
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[tb_user.email]', [
             'is_unique' => 'This email has already registered!'
@@ -112,5 +116,18 @@ class Auth extends CI_Controller
         $this->load->view('templates/auth_header', $data);
         $this->load->view('auth/blocked');
         $this->load->view('templates/auth_footer');
+    }
+
+    private function goToDefaultPage()
+    {
+        $level = $this->session->userdata('role_id');
+
+        if ($level == 1) {
+            redirect('admin');
+            return false;
+        } else if ($level == 2) {
+            redirect('user');
+            return false;
+        }
     }
 }
