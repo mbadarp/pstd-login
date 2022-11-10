@@ -38,7 +38,29 @@
    <script src="<?= base_url('assets/') ?>assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
    <script src="<?= base_url('assets/') ?>assets/vendor/js/menu.js"></script>
+   <script src="<?= base_url('assets/') ?>js/jquery-3.6.1.min.js"></script>
    <!-- endbuild -->
+
+   <!-- ajax access role -->
+   <script>
+       $('.form-check-input').on('click', function() {
+           const menuId = $(this).data('menu');
+           const roleId = $(this).data('role');
+
+           $.ajax({
+               url: "<?= base_url('admin/change_access'); ?>",
+               type: 'post',
+               data: {
+                   menuId: menuId,
+                   roleId: roleId
+               },
+
+               success: function() {
+                   document.location.href = "<?= base_url('admin/roleaccess/') ?>" + roleId;
+               }
+           });
+       })
+   </script>
 
    <!-- Vendors JS -->
 
