@@ -6,6 +6,12 @@
         <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">P.std /</span> <?= $title; ?></h4>
         <div class="row">
             <div class="col-md-6">
+                <?= $this->session->flashdata('message'); ?>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
                 <div class="card mb-3">
                     <div class="row g-0">
                         <div class="col-md-4">
