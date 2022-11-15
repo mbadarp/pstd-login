@@ -303,6 +303,7 @@ class Auth extends CI_Controller
             $this->db->where('email', $email);
             $this->db->update('tb_user');
 
+            $this->db->delete('tb_user_token', ['email' => $email]);
             $this->session->unset_userdata('reset_email');
 
             $this->session->set_flashdata('message', ' <div class="alert alert-success" role="alert">Password has been changed! Please login.</div>');
